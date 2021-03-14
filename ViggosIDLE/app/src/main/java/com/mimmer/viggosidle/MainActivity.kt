@@ -24,5 +24,6 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         //Sutmigtak
+        //mere
     }
 }
