@@ -30,10 +30,11 @@ class DrinkFragment : Fragment() {
         imageView.setOnClickListener() {
             Log.i("ClickTag","Main image clicked!")
             homeViewModel.currentScore += 1
-            homeViewModel.score.value
+            homeViewModel.setScore()
+
 
             Log.i("CurrentScore", homeViewModel.currentScore.toString())
-            Log.i("score value", homeViewModel.score.value.toString())
+            Log.i("score value", homeViewModel.getScore().value.toString())
 
             score.text = homeViewModel.currentScore.toString()
 

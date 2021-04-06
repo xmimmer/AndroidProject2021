@@ -17,7 +17,13 @@ class DrinkViewModel : ViewModel() {
     }
 
     val text: LiveData<String> = _text
-    val score: LiveData<Int> = _score
+
+    fun getScore(): MutableLiveData<Int> {
+        return _score
+    }
+    fun setScore(){
+        _score.value = currentScore
+    }
 
 
 
