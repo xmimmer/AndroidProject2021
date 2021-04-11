@@ -1,11 +1,15 @@
-package com.mimmer.viggosidle.ui.drink
+package com.mimmer.viggosidle
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mimmer.viggosidle.MainActivity
+import androidx.room.Room
+import com.mimmer.viggosidle.Database.AppDatabase
+import com.mimmer.viggosidle.Database.DatabaseBuilder
+import com.mimmer.viggosidle.Database.DbHelper
+import com.mimmer.viggosidle.Database.DbHelperImpl
 
-class DrinkViewModel : ViewModel() {
+class MainViewModel() : ViewModel() {
 
 
     var currentScore = 0
@@ -26,11 +30,4 @@ class DrinkViewModel : ViewModel() {
     fun setScore(){
         _score.value = currentScore
     }
-
-
-
 }
-
-
-
-

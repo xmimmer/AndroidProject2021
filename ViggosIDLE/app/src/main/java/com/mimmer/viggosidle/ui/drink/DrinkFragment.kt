@@ -9,11 +9,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.mimmer.viggosidle.MainActivity
+import com.mimmer.viggosidle.MainViewModel
 import com.mimmer.viggosidle.R
 
 class DrinkFragment : Fragment() {
 
-    private lateinit var homeViewModel: DrinkViewModel
+
+
+    private lateinit var homeViewModel: MainViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -21,11 +25,12 @@ class DrinkFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         homeViewModel =
-                ViewModelProviders.of(this).get(DrinkViewModel::class.java)
+                ViewModelProviders.of(this).get(MainViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
         val score: TextView = root.findViewById(R.id.score)
         val imageView: ImageView = root.findViewById(R.id.main_image)
+
 
         imageView.setOnClickListener() {
             Log.i("ClickTag","Main image clicked!")
