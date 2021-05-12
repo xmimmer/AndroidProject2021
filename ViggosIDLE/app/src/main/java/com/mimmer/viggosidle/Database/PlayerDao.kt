@@ -18,4 +18,7 @@ interface PlayerDao {
 
     @Query("SELECT current_score FROM Player")
     suspend fun getCurrentScore(): Int
+
+    @Query("UPDATE Player SET current_score = :int WHERE uid = 1")
+    suspend fun setCurrentScore(int: Int)
 }

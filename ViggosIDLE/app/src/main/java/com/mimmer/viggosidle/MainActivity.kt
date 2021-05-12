@@ -1,6 +1,7 @@
 package com.mimmer.viggosidle
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
@@ -14,7 +15,7 @@ import com.mimmer.viggosidle.Database.AppDatabase
 import com.mimmer.viggosidle.Database.DatabaseBuilder
 import com.mimmer.viggosidle.Database.DbHelperImpl
 import com.mimmer.viggosidle.Database.Player
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,15 +42,18 @@ class MainActivity : AppCompatActivity() {
             if (players.isEmpty()) {
                 val player = Player(
                     uid = 1,
-                    glassNumber = "",
-                    currentScore = 0,
+                    glassNumber = "8550",
+                    currentScore = 4,
                     clickingPower = 1,
                     idleGains = 0
                 )
                 dbHelper.insertPlayer(player)
             }
-            viewModel.currentScore = dbHelper.getCurrentScore()
-            print(dbHelper.getAll())
+            launch {
+                Log.i("db", dbHelper.getAll().toString())
+                Log.i("score", dbHelper.getCurrentScore().toString())
+            }
         }
+
     }
 }

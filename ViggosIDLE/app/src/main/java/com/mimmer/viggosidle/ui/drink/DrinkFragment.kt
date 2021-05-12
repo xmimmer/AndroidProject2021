@@ -30,7 +30,7 @@ class DrinkFragment : Fragment() {
         val textView: TextView = root.findViewById(R.id.text_home)
         val score: TextView = root.findViewById(R.id.score)
         val imageView: ImageView = root.findViewById(R.id.main_image)
-
+        score.text = homeViewModel.currentScore.toString()
 
         imageView.setOnClickListener() {
             Log.i("ClickTag","Main image clicked!")
@@ -40,8 +40,8 @@ class DrinkFragment : Fragment() {
 
             Log.i("CurrentScore", homeViewModel.currentScore.toString())
             Log.i("score value", homeViewModel.getScore().value.toString())
-
             score.text = homeViewModel.currentScore.toString()
+
 
         }
         return root

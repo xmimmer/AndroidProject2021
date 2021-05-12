@@ -8,6 +8,8 @@ class DbHelperImpl (private val appDatabase: AppDatabase) : DbHelper {
 
     override suspend fun getCurrentScore(): Int = appDatabase.playerDao().getCurrentScore()
 
+    override suspend fun setCurrentScore(int: Int) = appDatabase.playerDao().setCurrentScore(int)
+
 
 
 }

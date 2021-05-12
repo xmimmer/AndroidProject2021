@@ -1,5 +1,7 @@
 package com.mimmer.viggosidle
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,13 +10,23 @@ import com.mimmer.viggosidle.Database.AppDatabase
 import com.mimmer.viggosidle.Database.DatabaseBuilder
 import com.mimmer.viggosidle.Database.DbHelper
 import com.mimmer.viggosidle.Database.DbHelperImpl
+import kotlinx.coroutines.*
 
-class MainViewModel() : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val dbHelper = DbHelperImpl(DatabaseBuilder.getInstance(application))
 
     var currentScore = 0
 
-    private val _text = MutableLiveData<String>().apply {
+    init {
+        runBlocking {
+            currentScore = dbHelper.getCurrentScore()
+        }
+    }
+
+
+
+    private val _drinkText = MutableLiveData<String>().apply {
         value = "This is the drink Fragment"
     }
 
@@ -22,12 +34,17 @@ class MainViewModel() : ViewModel() {
         value = currentScore
     }
 
-    val text: LiveData<String> = _text
+    val text: LiveData<String> = _drinkText
 
     fun getScore(): MutableLiveData<Int> {
         return _score
     }
     fun setScore(){
         _score.value = currentScore
+        runBlocking {
+            dbHelper.setCurrentScore(currentScore)
+        }
+
     }
+
 }
