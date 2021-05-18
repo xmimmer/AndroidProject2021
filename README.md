@@ -3,4 +3,3 @@
 1. Clone
 2. Build
 3. Run
-4. Fail
