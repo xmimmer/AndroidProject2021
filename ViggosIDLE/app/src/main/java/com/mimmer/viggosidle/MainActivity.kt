@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.room.Room
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.mimmer.viggosidle.Database.AppDatabase
 import com.mimmer.viggosidle.Database.DatabaseBuilder
 import com.mimmer.viggosidle.Database.DbHelperImpl
 import com.mimmer.viggosidle.Database.Player
-import kotlinx.coroutines.*
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 val player = Player(
                     uid = 1,
                     glassNumber = "8550",
-                    currentScore = 4,
+                    currentScore = 0,
                     clickingPower = 1,
                     idleGains = 0
                 )
@@ -52,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             launch {
                 Log.i("db", dbHelper.getAll().toString())
                 Log.i("score", dbHelper.getCurrentScore().toString())
+                Log.i("idle_gains", dbHelper.getIdleGains().toString())
             }
         }
 
