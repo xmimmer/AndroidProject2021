@@ -61,7 +61,7 @@ class ShopFragment : Fragment() {
             }
             if (homeViewModel.currentScore >= Autoclickers.PIGE.price) {
                 autoClickerButton.setBackgroundColor(Color.YELLOW)
-                autoClickerButton.isEnabled = true
+                //autoClickerButton.isEnabled = true
             } else {
                 autoClickerButton.setBackgroundColor(Color.RED)
                 autoClickerButton.isEnabled = false
